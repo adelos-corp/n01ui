@@ -12,7 +12,41 @@ const metrics=[['INCIDENTS',64508,Activity],['FATALITIES',188427,Crosshair],['IN
 const sections=[['overview','Overview',BarChart3],['geography','Geography',Globe2],['tactics','Tactics',Target],['actors','Actors',Users],['casualties','Casualties',Crosshair]];
 
 function DashboardFrame(){
- return <iframe className="dashboard-frame" title="GRID analytical visualizations" src="https://raw.githubusercontent.com/adelos-corp/n01ui/main/grid_terrorism_dashboard.html"/>}
+ const frame=useRef(null);
+ useEffect(()=>{
+  const f=frame.current;
+  const onLoad=()=>{
+   try{
+    const d=f.contentDocument;
+    const s=d.createElement('style');
+    s.textContent=`
+html,body{background:transparent!important;color:#dce8f5!important;padding:0!important}
+body{font-family:Inter,system-ui,sans-serif!important}
+h1,p.sub,.note,.footer,.kpis{display:none!important}
+.section{background:rgba(8,15,27,.42)!important;border:1px solid rgba(145,187,220,.11)!important;box-shadow:0 20px 70px rgba(0,0,0,.28)!important;border-radius:18px!important;max-width:none!important;padding:12px!important;margin:0 0 14px!important;backdrop-filter:blur(18px)!important}
+.row{gap:14px!important;margin-top:0!important}.row>div{min-width:320px!important}
+.plotly,.js-plotly-plot{border-radius:12px!important;overflow:hidden!important}
+.modebar{opacity:.18!important}.modebar:hover{opacity:1!important}
+`;
+    d.head.appendChild(s);
+    const resize=()=>{
+      const h=Math.max(d.body?.scrollHeight||0,d.documentElement?.scrollHeight||0);
+      if(h) f.style.height=`${h+12}px`;
+    };
+    resize();
+    const ro=new ResizeObserver(resize);
+    if(d.body) ro.observe(d.body);
+    if(d.documentElement) ro.observe(d.documentElement);
+    setTimeout(resize,500);
+    setTimeout(resize,1500);
+    f.__resizeObserver=ro;
+   }catch(e){}
+  };
+  f?.addEventListener('load',onLoad);
+  return()=>{f?.removeEventListener('load',onLoad);f?.__resizeObserver?.disconnect()};
+ },[]);
+ return <iframe ref={frame} className="dashboard-frame" title="GRID analytical visualizations" src="./grid_terrorism_dashboard.html"/>
+}
 
 function App(){
  const [active,setActive]=useState('overview'); const [menu,setMenu]=useState(false);
