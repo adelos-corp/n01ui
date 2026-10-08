@@ -29,21 +29,10 @@ h1,p.sub,.note,.footer,.kpis{display:none!important}
 .modebar{opacity:.18!important}.modebar:hover{opacity:1!important}
 `;
     d.head.appendChild(s);
-    const resize=()=>{
-      const h=Math.max(d.body?.scrollHeight||0,d.documentElement?.scrollHeight||0);
-      if(h) f.style.height=`${h+12}px`;
-    };
-    resize();
-    const ro=new ResizeObserver(resize);
-    if(d.body) ro.observe(d.body);
-    if(d.documentElement) ro.observe(d.documentElement);
-    setTimeout(resize,500);
-    setTimeout(resize,1500);
-    f.__resizeObserver=ro;
    }catch(e){}
   };
   f?.addEventListener('load',onLoad);
-  return()=>{f?.removeEventListener('load',onLoad);f?.__resizeObserver?.disconnect()};
+  return()=>f?.removeEventListener('load',onLoad);
  },[]);
  return <iframe ref={frame} className="dashboard-frame" title="GRID analytical visualizations" src="./grid_terrorism_dashboard.html"/>
 }
