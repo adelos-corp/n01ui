@@ -1,0 +1,1 @@
+# N01 UI\n\nReact/Vite presentation layer for the GTTAC GRID analytical dashboard.\n\nThe original self-contained Plotly dashboard remains the analytical payload; the React shell adds the N01 interface, glass treatment, motion, navigation and interactive KPI cards.\n\nRun with npm install && npm run dev. Build with npm run build.
