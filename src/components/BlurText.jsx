@@ -1,0 +1,1 @@
+import {motion} from 'framer-motion';export default function BlurText({children,className=''}){return <motion.span className={className} initial={{opacity:0,filter:'blur(12px)',y:8}} animate={{opacity:1,filter:'blur(0px)',y:0}} transition={{duration:.8,ease:'easeOut'}}>{children}</motion.span>}
