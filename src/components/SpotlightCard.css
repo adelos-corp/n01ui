@@ -1,0 +1,1 @@
+.spotlight-card{position:relative;overflow:hidden}.spotlight-card::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(420px circle at var(--mouse-x,50%) var(--mouse-y,50%),var(--spotlight-color),transparent 62%);opacity:0;transition:opacity .35s ease}.spotlight-card:hover::before{opacity:1}
