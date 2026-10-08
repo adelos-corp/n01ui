@@ -1,0 +1,3 @@
+import { useRef } from 'react';
+import './SpotlightCard.css';
+export default function SpotlightCard({children,className='',spotlightColor='rgba(92,180,255,.16)'}){const ref=useRef(null);const handleMouseMove=e=>{const r=ref.current?.getBoundingClientRect();if(!r)return;ref.current.style.setProperty('--mouse-x',(e.clientX-r.left)+'px');ref.current.style.setProperty('--mouse-y',(e.clientY-r.top)+'px');ref.current.style.setProperty('--spotlight-color',spotlightColor)};return <div ref={ref} onMouseMove={handleMouseMove} className={'spotlight-card '+className}>{children}</div>}
