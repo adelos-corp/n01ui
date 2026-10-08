@@ -21,7 +21,7 @@ h1,p.sub,.note,.footer,.kpis{display:none!important}
 .row{gap:14px!important;margin-top:0!important}.row>div{min-width:320px!important}
 .plotly,.js-plotly-plot{border-radius:12px!important;overflow:hidden!important}
 .modebar{opacity:.18!important}.modebar:hover{opacity:1!important}
-`;d.head.appendChild(s)}catch(e){}};f?.addEventListener('load',onLoad);return()=>f?.removeEventListener('load',onLoad)},[]);
+`;d.head.appendChild(s);const resize=()=>{const h=Math.max(d.body?.scrollHeight||0,d.documentElement?.scrollHeight||0);if(h)f.style.height=`${h+8}px`};resize();const ro=new ResizeObserver(resize);if(d.body)ro.observe(d.body);if(d.documentElement)ro.observe(d.documentElement);setTimeout(resize,300);setTimeout(resize,1000);f.__resizeObserver=ro}catch(e){}};f?.addEventListener('load',onLoad);return()=>{f?.removeEventListener('load',onLoad);f?.__resizeObserver?.disconnect()},[]);
  return <iframe ref={frame} className="dashboard-frame" title="GRID analytical visualizations" src="./grid_terrorism_dashboard.html"/>}
 
 function App(){
@@ -39,7 +39,7 @@ function App(){
   <section className="hero" id="overview">
    <div className="eyebrow"><Database size={14}/> DIPLOMA FINAL YEAR PROJECT</div>
    <h1><BlurText>A Statistical &amp; Geographic Study of a Synthetic Global <em>Terrorism Incident Dataset.</em></BlurText></h1>
-   <p> is the implemented analytical interface for the supplied GTTAC Record of Incident Database (GRID) snapshot, bringing statistical, geographic, tactic, actor and casualty analysis into one navigable surface.</p>
+   <p>This is the implemented analytical interface for the supplied GTTAC Record of Incident Database (GRID) snapshot, bringing statistical, geographic, tactic, actor and casualty analysis into one navigable surface.</p>
    <div className="hero-meta"><span>64,508 INCIDENT RECORDS</span><i/> <span>01 JAN 2018 — 13 FEB 2026</span></div>
   </section>
   <nav className="nav glass">{sections.map(([id,n,I],i)=><button key={id} className={active===id?'active':''} onClick={()=>go(id)}><I size={13}/><span>0{i+1}</span>{n}</button>)}</nav>
@@ -48,7 +48,7 @@ function App(){
    <SpotlightCard className="metric peak glass"><div className="metric-top"><Globe2 size={16}/><span>YEAR</span></div><span className="metric-label">PEAK INCIDENT VOLUME</span><strong>2020</strong><small>HIGHEST ANNUAL ACTIVITY</small></SpotlightCard>
   </section>
   <section className="section-head" id="geography"><div><span>01 / ANALYTICAL OVERVIEW</span><h2>Operational picture</h2><p>Incident volume, casualty burden and global distribution.</p></div><div className="section-chip"><Radio size={13}/> GRID SNAPSHOT</div></section>
-  <section className="academic-panel glass"><img className="institution-emblem" src="/kes-emblem.png" alt="Krishnaveni Exhibition Society emblem"/><div><span className="label">ACADEMIC CONTEXT</span><strong>Diploma Final Year · Computer Engineering</strong><p>KES Polytechnic College · Academic Year 2026–2027</p></div><div><span className="label">SUPERVISION</span><strong>N. Kavya</strong><p>Lecturer</p></div><div><span className="label">INSTITUTIONAL LEADERSHIP</span><strong>M. Srinivasa Rao</strong><p>Head of Department · Principal / External Examiner</p></div></section>
+  <section className="academic-panel glass"><img className="institution-emblem" src="https://careerandcampus.com/static//media/institute_logo/kk.JPG" alt="Krishnaveni Exhibition Society emblem"/><div><span className="label">ACADEMIC CONTEXT</span><strong>Diploma Final Year · Computer Engineering</strong><p>KES Polytechnic College · Academic Year 2026–2027</p></div><div><span className="label">SUPERVISION</span><strong>N. Kavya</strong><p>Lecturer</p></div><div><span className="label">INSTITUTIONAL LEADERSHIP</span><strong>M. Srinivasa Rao</strong><p>Head of Department · Principal / External Examiner</p></div></section>
   <DashboardFrame/>
   <section className="hidden-anchor" id="actors"/><section className="hidden-anchor" id="casualties"/>
   <footer className="footer-panel glass" id="tactics"><div><span className="label">PROJECT & METHODOLOGY</span><strong>A Statistical and Geographic Study of a Synthetic Global Terrorism Incident Dataset</strong><p>Diploma Final Year project in Computer Engineering at KES Polytechnic College.  is an original visualization interface generated from the supplied GTTAC Record of Incident Database (GRID) snapshot. Analytical definitions follow the source data.</p></div><a href="https://www.GTTAC.com" target="_blank" rel="noreferrer">GTTAC <ExternalLink size={13}/></a><a href="https://www.GRIDdata.com" target="_blank" rel="noreferrer">GRID <ExternalLink size={13}/></a></footer>
